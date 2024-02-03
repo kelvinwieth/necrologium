@@ -24,6 +24,10 @@ class ScaffoldWithTabs extends StatelessWidget {
             icon: Icon(Icons.ballot),
             label: 'Necro',
           ),
+          NavigationDestination(
+            icon: Icon(Icons.settings),
+            label: 'Options',
+          ),
         ],
       ),
     );

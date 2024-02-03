@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:necrologium/navigation/ne_routes.dart';
+import 'package:necrologium/navigation/navigation.dart';
 import 'package:necrologium/shared/ui/styles/ne_colors.dart';
 
 void main() {

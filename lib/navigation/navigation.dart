@@ -3,6 +3,7 @@ import 'package:necrologium/diary/ui/diary_screen.dart';
 import 'package:necrologium/navigation/ui/scaffold_with_tabs.dart';
 import 'package:necrologium/necrologium/ui/necrologium_screen.dart';
 import 'package:necrologium/onboard/ui/screens/onboard_screen.dart';
+import 'package:necrologium/options/ui/options_screen.dart';
 
 abstract class Navigation {
   static final router = GoRouter(
@@ -28,6 +29,14 @@ abstract class Navigation {
               GoRoute(
                 path: '/necrologium',
                 builder: (_, __) => const NecrologiumScreen(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/options',
+                builder: (_, __) => const OptionsScreen(),
               ),
             ],
           ),
