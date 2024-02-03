@@ -15,12 +15,12 @@ class NecrologiumApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
+      routerConfig: Navigation.router,
       themeMode: ThemeMode.dark,
       theme: ThemeData(fontFamily: 'Karla'),
       darkTheme: ThemeData(fontFamily: 'Karla').copyWith(
         colorScheme: NeColorSchemes.darkScheme,
       ),
-      routerConfig: NeRoutes.router,
     );
   }
 }

@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:necrologium/diary/ui/diary_screen.dart';
+import 'package:necrologium/navigation/ui/scaffold_with_tabs.dart';
+import 'package:necrologium/necrologium/ui/necrologium_screen.dart';
 import 'package:necrologium/onboard/ui/screens/onboard_screen.dart';
-import 'package:necrologium/shared/ui/extensions/context_colors_helper.dart';
 
-abstract class NeRoutes {
+abstract class Navigation {
   static final router = GoRouter(
     initialLocation: '/onboard',
     routes: [
@@ -27,7 +27,7 @@ abstract class NeRoutes {
             routes: [
               GoRoute(
                 path: '/necrologium',
-                builder: (_, __) => const DiaryScreen(),
+                builder: (_, __) => const NecrologiumScreen(),
               ),
             ],
           ),
@@ -35,25 +35,4 @@ abstract class NeRoutes {
       ),
     ],
   );
-}
-
-class ScaffoldWithTabs extends StatelessWidget {
-  final StatefulNavigationShell shell;
-
-  const ScaffoldWithTabs({super.key, required this.shell});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: context.colors.background,
-      body: shell,
-      bottomNavigationBar: NavigationBar(
-        destinations: const [
-          NavigationDestination(icon: Icon(Icons.book), label: 'Diario'),
-          NavigationDestination(icon: Icon(Icons.ballot), label: 'Necro'),
-        ],
-        onDestinationSelected: shell.goBranch,
-      ),
-    );
-  }
 }
