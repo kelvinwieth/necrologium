@@ -44,3 +44,16 @@ class NeRegularText extends NeText {
           fontFamily: 'Karla',
         );
 }
+
+class NeSmallText extends NeText {
+  NeSmallText(
+    super.data, {
+    super.key,
+    super.color,
+    super.fontWeight,
+    super.textAlign,
+  }) : super(
+          fontSize: 10,
+          fontFamily: 'Karla',
+        );
+}

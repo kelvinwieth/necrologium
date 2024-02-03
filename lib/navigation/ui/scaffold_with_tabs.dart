@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:necrologium/navigation/ui/tabs.dart';
 import 'package:necrologium/shared/ui/extensions/context_colors_helper.dart';
 
 class ScaffoldWithTabs extends StatelessWidget {
@@ -12,23 +13,13 @@ class ScaffoldWithTabs extends StatelessWidget {
     return Scaffold(
       backgroundColor: context.colors.background,
       body: shell,
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: shell.currentIndex,
-        onDestinationSelected: shell.goBranch,
-        destinations: const [
-          NavigationDestination(
-            icon: Icon(Icons.book),
-            label: 'Diario',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.ballot),
-            label: 'Necro',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.settings),
-            label: 'Options',
-          ),
-        ],
+      bottomNavigationBar: Container(
+        padding: const EdgeInsets.symmetric(vertical: 16),
+        color: context.colors.primaryContainer,
+        child: Tabs(
+          currentIndex: shell.currentIndex,
+          onSelected: shell.goBranch,
+        ),
       ),
     );
   }

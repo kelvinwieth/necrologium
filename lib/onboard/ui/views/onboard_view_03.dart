@@ -6,7 +6,7 @@ import 'package:necrologium/onboard/ui/widgets/onboard_progress.dart';
 import 'package:necrologium/shared/ui/buttons/ne_back_button.dart';
 import 'package:necrologium/shared/ui/buttons/ne_primary_button.dart';
 import 'package:necrologium/shared/ui/extensions/context_colors_helper.dart';
-import 'package:necrologium/shared/ui/texts/ne_display_text.dart';
+import 'package:necrologium/shared/ui/texts/ne_texts.dart';
 import 'package:necrologium/shared/ui/widgets/spacers.dart';
 
 class OnboardView03 extends StatelessWidget {

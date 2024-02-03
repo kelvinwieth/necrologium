@@ -20,5 +20,7 @@ abstract class NeColorSchemes {
     outlineVariant: NeColors.gray24b,
     primary: NeColors.orange,
     onPrimary: Colors.black,
+    primaryContainer: NeColors.gray24b,
+    onPrimaryContainer: NeColors.gray48b,
   );
 }
