@@ -1,6 +1,7 @@
 import 'package:dart_date/dart_date.dart' as dt;
 import 'package:dartx/dartx.dart' as dx;
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:necrologium/diary/core/diary.dart';
 import 'package:necrologium/shared/ui/extensions/context_colors_helper.dart';
@@ -180,21 +181,26 @@ class _DayCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: bgColor(context),
-        borderRadius: BorderRadius.circular(4),
-      ),
-      child: Center(
-        child: Text(
-          day.day.toString(),
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.bold,
-            color: !NeThemes.isDark && isFuture
-                ? NeColors.darkGray48b
-                : context.colors.onPrimary,
+    return GestureDetector(
+      onTap: () {
+        context.go('/diary/${day.millisecondsSinceEpoch}');
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: bgColor(context),
+          borderRadius: BorderRadius.circular(4),
+        ),
+        child: Center(
+          child: Text(
+            day.day.toString(),
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+              color: !NeThemes.isDark && isFuture
+                  ? NeColors.darkGray48b
+                  : context.colors.onPrimary,
+            ),
           ),
         ),
       ),
