@@ -11,7 +11,7 @@ class InMemoryDiaryRepository implements DiaryRepository {
     ],
   );
 
-  static Duration get _delay => const Duration(milliseconds: 800);
+  static Duration get _delay => const Duration(seconds: 2);
 
   @override
   Future<Diary> getDiary() async {
