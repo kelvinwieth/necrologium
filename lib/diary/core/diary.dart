@@ -1,4 +1,5 @@
 import 'package:dart_date/dart_date.dart';
+import 'package:dartx/dartx.dart';
 import 'package:uuid/uuid.dart';
 
 class Diary {
@@ -8,6 +9,10 @@ class Diary {
 
   bool wroteOnDay(DateTime day) {
     return days.any((d) => d.day.isSameDay(day));
+  }
+
+  DiaryDay? getDayOrNull(DateTime date) {
+    return days.firstOrNullWhere((d) => d.day.isSameDay(date));
   }
 }
 

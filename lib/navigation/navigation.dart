@@ -1,11 +1,12 @@
-import 'package:dartx/dartx.dart';
 import 'package:go_router/go_router.dart';
+import 'package:necrologium/diary/core/diary.dart';
 import 'package:necrologium/diary/ui/screens/diary_day_screen.dart';
 import 'package:necrologium/diary/ui/screens/diary_screen.dart';
 import 'package:necrologium/navigation/ui/scaffold_with_tabs.dart';
 import 'package:necrologium/necrologium/ui/necrologium_screen.dart';
 import 'package:necrologium/onboard/ui/screens/onboard_screen.dart';
 import 'package:necrologium/options/ui/options_screen.dart';
+import 'package:necrologium/shared/utils/extensions.dart';
 
 abstract class Navigation {
   static final router = GoRouter(
@@ -25,17 +26,12 @@ abstract class Navigation {
                 builder: (_, __) => const DiaryScreen(),
                 routes: [
                   GoRoute(
-                    path: ':timestamp',
+                    path: ':id',
                     builder: (_, state) {
-                      final stamp = state.pathParameters['timestamp'] ?? '';
-                      final seconds = int.tryParse(stamp);
-
-                      if (seconds == null) {
-                        return const DiaryDayScreen();
-                      }
-
-                      final date = DateTime.fromMillisecondsSinceEpoch(seconds);
-                      return DiaryDayScreen.fromDate(date.date);
+                      return DiaryDayScreen(
+                        id: state.pathParameters['id'],
+                        day: state.extra?.maybeAs<DiaryDay>(),
+                      );
                     },
                   ),
                 ],

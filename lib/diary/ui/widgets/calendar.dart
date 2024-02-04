@@ -79,13 +79,16 @@ class Calendar extends StatelessWidget {
                   todayBuilder: (_, day, __) {
                     return Padding(
                       padding: const EdgeInsets.all(4),
-                      child: _DayCard(day, wrote: diary.wroteOnDay(day)),
+                      child: _DayCard(day, day: diary.getDayOrNull(day)),
                     );
                   },
                   defaultBuilder: (_, day, __) {
                     return Padding(
                       padding: const EdgeInsets.all(4),
-                      child: _DayCard(day, wrote: diary.wroteOnDay(day)),
+                      child: _DayCard(
+                        day,
+                        day: diary.getDayOrNull(day),
+                      ),
                     );
                   },
                   outsideBuilder: (context, day, focusedDay) {
@@ -158,12 +161,13 @@ class _Label extends StatelessWidget {
 }
 
 class _DayCard extends StatelessWidget {
-  final bool wrote;
-  final DateTime day;
+  final DateTime date;
+  final DiaryDay? day;
 
-  const _DayCard(this.day, {this.wrote = false});
+  const _DayCard(this.date, {this.day});
 
-  bool get isFuture => day.date.isAfter(DateTime.now().date);
+  bool get isFuture => date.date.isAfter(DateTime.now().date);
+  bool get wrote => day != null;
 
   Color bgColor(BuildContext context) {
     if (wrote) {
@@ -183,7 +187,7 @@ class _DayCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.go('/diary/${day.millisecondsSinceEpoch}');
+        context.go('/diary/${day?.id}', extra: day);
       },
       child: Container(
         decoration: BoxDecoration(
@@ -192,7 +196,7 @@ class _DayCard extends StatelessWidget {
         ),
         child: Center(
           child: Text(
-            day.day.toString(),
+            date.day.toString(),
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 15,
