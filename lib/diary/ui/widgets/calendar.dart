@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:necrologium/diary/core/diary.dart';
 import 'package:necrologium/shared/ui/extensions/context_colors_helper.dart';
 import 'package:necrologium/shared/ui/styles/ne_colors.dart';
+import 'package:necrologium/shared/ui/styles/ne_themes.dart';
 import 'package:necrologium/shared/ui/widgets/spacers.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -20,7 +21,11 @@ class Calendar extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: context.colors.surfaceVariant,
+            color:
+                NeThemes.isDark ? context.colors.surfaceVariant : Colors.white,
+            border: NeThemes.isDark
+                ? null
+                : Border.all(color: context.colors.outlineVariant),
           ),
           padding: const EdgeInsets.all(8),
           child: Column(
@@ -157,13 +162,17 @@ class _DayCard extends StatelessWidget {
 
   const _DayCard(this.day, {this.wrote = false});
 
-  Color color(BuildContext context) {
+  bool get isFuture => day.date.isAfter(DateTime.now().date);
+
+  Color bgColor(BuildContext context) {
     if (wrote) {
       return NeColors.green;
     }
 
-    if (day.date.isAfter(DateTime.now().date)) {
-      return context.colors.surface;
+    if (isFuture) {
+      return NeThemes.isDark
+          ? context.colors.surface
+          : NeColors.lightBackground2;
     }
 
     return context.colors.primary;
@@ -173,16 +182,19 @@ class _DayCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: color(context),
+        color: bgColor(context),
         borderRadius: BorderRadius.circular(4),
       ),
       child: Center(
         child: Text(
           day.day.toString(),
           textAlign: TextAlign.center,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 15,
             fontWeight: FontWeight.bold,
+            color: !NeThemes.isDark && isFuture
+                ? NeColors.darkGray48b
+                : context.colors.onPrimary,
           ),
         ),
       ),

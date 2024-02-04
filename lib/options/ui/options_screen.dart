@@ -149,10 +149,10 @@ class _RateUsButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: context.colors.surface,
+        color: context.colors.tertiaryContainer,
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
-          color: context.colors.primary.withOpacity(0.48),
+          color: context.colors.onTertiary,
           width: 2,
         ),
       ),
@@ -164,7 +164,7 @@ class _RateUsButton extends StatelessWidget {
           Icon(
             Icons.star,
             size: 16,
-            color: context.colors.primary,
+            color: context.colors.tertiary,
           ),
           const HorizontalSpace(8),
           Text(
@@ -176,7 +176,7 @@ class _RateUsButton extends StatelessWidget {
           Text(
             ' avaliação na loja',
             style: TextStyle(
-              color: context.colors.primary,
+              color: context.colors.tertiary,
             ),
           ),
         ],

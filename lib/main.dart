@@ -25,7 +25,9 @@ class NecrologiumApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           routerConfig: Navigation.router,
           themeMode: mode,
-          theme: ThemeData(fontFamily: 'Karla'),
+          theme: ThemeData(fontFamily: 'Karla').copyWith(
+            colorScheme: NeColorSchemes.light,
+          ),
           darkTheme: ThemeData(fontFamily: 'Karla').copyWith(
             colorScheme: NeColorSchemes.darkScheme,
           ),

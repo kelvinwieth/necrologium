@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:necrologium/shared/ui/extensions/context_colors_helper.dart';
+import 'package:necrologium/shared/ui/styles/ne_themes.dart';
 import 'package:necrologium/shared/ui/texts/ne_texts.dart';
 import 'package:necrologium/shared/ui/widgets/spacers.dart';
 
@@ -30,7 +31,12 @@ class ActionCard extends StatelessWidget {
         color: context.colors.surface,
         borderRadius: BorderRadius.circular(8),
         border: hasBorder
-            ? Border.all(color: context.colors.onPrimaryContainer, width: 2)
+            ? Border.all(
+                width: 2,
+                color: NeThemes.isDark
+                    ? context.colors.onPrimaryContainer
+                    : context.colors.outlineVariant,
+              )
             : null,
       ),
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
