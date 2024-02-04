@@ -1,4 +1,5 @@
 import 'package:dart_date/dart_date.dart';
+import 'package:uuid/uuid.dart';
 
 class Diary {
   final List<DiaryDay> days;
@@ -11,11 +12,12 @@ class Diary {
 }
 
 class DiaryDay {
+  final String id;
   final DateTime day;
   final String note;
 
-  const DiaryDay({
+  DiaryDay({
     required this.day,
     required this.note,
-  });
+  }) : id = const Uuid().v1();
 }
