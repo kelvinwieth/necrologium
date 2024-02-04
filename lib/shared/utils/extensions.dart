@@ -12,4 +12,8 @@ extension DateTimeExtension on DateTime {
   DateTime get normalized {
     return DateTime.utc(year, month, day);
   }
+
+  bool get isAfterToday {
+    return normalized.isAfter(DateTime.now().normalized);
+  }
 }

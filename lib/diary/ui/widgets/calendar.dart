@@ -8,6 +8,7 @@ import 'package:necrologium/shared/ui/extensions/context_colors_helper.dart';
 import 'package:necrologium/shared/ui/styles/ne_colors.dart';
 import 'package:necrologium/shared/ui/styles/ne_themes.dart';
 import 'package:necrologium/shared/ui/widgets/spacers.dart';
+import 'package:necrologium/shared/utils/extensions.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class Calendar extends StatelessWidget {
@@ -169,7 +170,6 @@ class _DayCard extends StatelessWidget {
 
   const _DayCard({required this.date, this.note});
 
-  bool get isFuture => date.date.isAfter(DateTime.now().date);
   bool get wrote => note != null;
 
   Color bgColor(BuildContext context) {
@@ -177,7 +177,7 @@ class _DayCard extends StatelessWidget {
       return NeColors.green;
     }
 
-    if (isFuture) {
+    if (date.isAfterToday) {
       return NeThemes.isDark
           ? context.colors.surface
           : NeColors.lightBackground2;
@@ -207,7 +207,7 @@ class _DayCard extends StatelessWidget {
             style: TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.bold,
-              color: !NeThemes.isDark && isFuture
+              color: !NeThemes.isDark && date.isAfterToday
                   ? NeColors.darkGray48b
                   : context.colors.onPrimary,
             ),
