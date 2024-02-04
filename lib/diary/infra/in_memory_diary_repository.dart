@@ -2,11 +2,15 @@ import 'package:necrologium/diary/core/diary.dart';
 import 'package:necrologium/diary/core/diary_repository.dart';
 
 class InMemoryDiaryRepository implements DiaryRepository {
-  final _diary = Diary(
+  static final _diary = Diary(
     days: [
       DiaryDay(
-        day: DateTime(2023, 02, 03),
-        note: 'Foo, bar, baz...',
+        day: DateTime(2024, 02, 03),
+        note: 'SIM SIM SALAMIN',
+      ),
+      DiaryDay(
+        day: DateTime(2024, 02, 04),
+        note: 'Pudim',
       ),
     ],
   );

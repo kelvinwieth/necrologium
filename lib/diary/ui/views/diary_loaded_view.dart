@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:necrologium/diary/core/diary.dart';
 import 'package:necrologium/diary/ui/bloc/diary_state.dart';
 import 'package:necrologium/diary/ui/widgets/calendar.dart';
 import 'package:necrologium/diary/ui/widgets/status_tag.dart';
@@ -60,7 +59,7 @@ class DiaryLoadedView extends StatelessWidget {
                 color: context.colors.outline,
               ),
               const VerticalSpace(16),
-              const Calendar(),
+              Calendar(diary: state.diary),
             ],
           ),
         ),

@@ -1,14 +1,17 @@
-import 'package:dart_date/dart_date.dart';
+import 'package:dart_date/dart_date.dart' as dt;
 import 'package:dartx/dartx.dart' as dx;
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:necrologium/diary/core/diary.dart';
 import 'package:necrologium/shared/ui/extensions/context_colors_helper.dart';
 import 'package:necrologium/shared/ui/styles/ne_colors.dart';
 import 'package:necrologium/shared/ui/widgets/spacers.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class Calendar extends StatelessWidget {
-  const Calendar({super.key});
+  final Diary diary;
+
+  const Calendar({super.key, required this.diary});
 
   @override
   Widget build(BuildContext context) {
@@ -70,13 +73,13 @@ class Calendar extends StatelessWidget {
                   todayBuilder: (_, day, __) {
                     return Padding(
                       padding: const EdgeInsets.all(4),
-                      child: DayCard(day),
+                      child: DayCard(day, wrote: diary.wroteOnDay(day)),
                     );
                   },
                   defaultBuilder: (_, day, __) {
                     return Padding(
                       padding: const EdgeInsets.all(4),
-                      child: DayCard(day),
+                      child: DayCard(day, wrote: diary.wroteOnDay(day)),
                     );
                   },
                   outsideBuilder: (context, day, focusedDay) {
@@ -149,24 +152,33 @@ class Label extends StatelessWidget {
 }
 
 class DayCard extends StatelessWidget {
-  final DateTime date;
+  final bool wrote;
+  final DateTime day;
 
-  const DayCard(this.date, {super.key});
+  const DayCard(this.day, {super.key, this.wrote = false});
 
-  DateTime get localDate => date.toLocal();
+  Color color(BuildContext context) {
+    if (wrote) {
+      return NeColors.green;
+    }
+
+    if (day.date.isAfter(DateTime.now().date)) {
+      return context.colors.surface;
+    }
+
+    return context.colors.primary;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: date.isAfter(DateTime.now())
-            ? context.colors.surface
-            : context.colors.primary,
+        color: color(context),
         borderRadius: BorderRadius.circular(4),
       ),
       child: Center(
         child: Text(
-          date.day.toString(),
+          day.day.toString(),
           textAlign: TextAlign.center,
           style: const TextStyle(
             fontSize: 15,

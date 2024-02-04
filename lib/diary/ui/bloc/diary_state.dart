@@ -18,17 +18,16 @@ class DiaryLoading extends DiaryState {
 class DiaryLoaded extends DiaryState {
   final Diary diary;
   final DateTime today;
-  final bool wroteToday;
 
   DiaryLoaded({
     required this.diary,
     required this.today,
-    required this.wroteToday,
   });
 
+  bool get wroteToday => diary.wroteOnDay(today);
   String get weekDay => DateFormat('EEEE').format(today).capitalize();
   String get day => DateFormat("d 'de' MMMM").format(today).capitalize();
 
   @override
-  List<Object?> get props => [diary, wroteToday];
+  List<Object?> get props => [diary];
 }

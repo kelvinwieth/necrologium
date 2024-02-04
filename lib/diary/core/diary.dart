@@ -1,7 +1,13 @@
+import 'package:dart_date/dart_date.dart';
+
 class Diary {
   final List<DiaryDay> days;
 
   const Diary({required this.days});
+
+  bool wroteOnDay(DateTime day) {
+    return days.any((d) => d.day.isSameDay(day));
+  }
 }
 
 class DiaryDay {
