@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:necrologium/diary/ui/views/diary_loaded_view.dart';
 import 'package:necrologium/shared/ui/extensions/context_colors_helper.dart';
-import 'package:necrologium/shared/ui/texts/ne_texts.dart';
 
 class DiaryScreen extends StatelessWidget {
   const DiaryScreen({super.key});
@@ -9,12 +9,7 @@ class DiaryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: context.colors.background,
-      body: Center(
-        child: NeDisplayText(
-          'Diarios',
-          color: context.colors.onBackground,
-        ),
-      ),
+      body: const DiaryLoadedView(),
     );
   }
 }
