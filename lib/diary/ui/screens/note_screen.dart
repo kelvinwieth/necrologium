@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:necrologium/navigation/ui/custom_app_bar.dart';
+import 'package:necrologium/shared/ui/extensions/context_colors_helper.dart';
 
 class NoteScreen extends StatefulWidget {
   final String? note;
@@ -14,9 +15,10 @@ class NoteScreen extends StatefulWidget {
 class _NoteScreenState extends State<NoteScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: CustomAppBar(title: 'Diário'),
-      body: Placeholder(),
+    return Scaffold(
+      backgroundColor: context.colors.background,
+      appBar: const CustomAppBar(title: 'Diário'),
+      body: const Placeholder(),
     );
   }
 }

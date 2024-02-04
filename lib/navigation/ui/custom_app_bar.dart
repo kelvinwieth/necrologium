@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:necrologium/shared/ui/buttons/ne_back_button.dart';
 import 'package:necrologium/shared/ui/extensions/context_colors_helper.dart';
 
@@ -18,7 +17,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              if (context.canPop()) ...[
+              if (ModalRoute.of(context)?.canPop == true) ...[
                 const NeBackButton(),
               ],
               if (title != null) ...[
