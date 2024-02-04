@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:necrologium/shared/ui/extensions/context_colors_helper.dart';
 import 'package:necrologium/shared/ui/widgets/spacers.dart';
 
@@ -10,7 +11,7 @@ class NeBackButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: onTap ?? () => context.pop(),
       behavior: HitTestBehavior.opaque,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
