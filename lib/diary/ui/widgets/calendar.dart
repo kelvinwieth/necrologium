@@ -73,13 +73,13 @@ class Calendar extends StatelessWidget {
                   todayBuilder: (_, day, __) {
                     return Padding(
                       padding: const EdgeInsets.all(4),
-                      child: DayCard(day, wrote: diary.wroteOnDay(day)),
+                      child: _DayCard(day, wrote: diary.wroteOnDay(day)),
                     );
                   },
                   defaultBuilder: (_, day, __) {
                     return Padding(
                       padding: const EdgeInsets.all(4),
-                      child: DayCard(day, wrote: diary.wroteOnDay(day)),
+                      child: _DayCard(day, wrote: diary.wroteOnDay(day)),
                     );
                   },
                   outsideBuilder: (context, day, focusedDay) {
@@ -106,12 +106,12 @@ class _Labels extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Label(
+        _Label(
           color: context.colors.primary,
           label: 'Diários não escritos',
         ),
         const HorizontalSpace(24),
-        const Label(
+        const _Label(
           color: NeColors.green,
           label: 'Diários já registrados',
         ),
@@ -120,11 +120,11 @@ class _Labels extends StatelessWidget {
   }
 }
 
-class Label extends StatelessWidget {
+class _Label extends StatelessWidget {
   final Color color;
   final String label;
 
-  const Label({super.key, required this.color, required this.label});
+  const _Label({required this.color, required this.label});
 
   @override
   Widget build(BuildContext context) {
@@ -151,11 +151,11 @@ class Label extends StatelessWidget {
   }
 }
 
-class DayCard extends StatelessWidget {
+class _DayCard extends StatelessWidget {
   final bool wrote;
   final DateTime day;
 
-  const DayCard(this.day, {super.key, this.wrote = false});
+  const _DayCard(this.day, {this.wrote = false});
 
   Color color(BuildContext context) {
     if (wrote) {
