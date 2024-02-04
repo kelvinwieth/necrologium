@@ -6,6 +6,7 @@ import 'package:necrologium/shared/ui/extensions/context_colors_helper.dart';
 import 'package:necrologium/shared/ui/texts/ne_texts.dart';
 import 'package:necrologium/shared/ui/widgets/action_card.dart';
 import 'package:necrologium/shared/ui/widgets/spacers.dart';
+import 'package:necrologium/shared/utils/extensions.dart';
 
 class DiaryLoadedView extends StatelessWidget {
   final DiaryLoaded state;
@@ -22,11 +23,11 @@ class DiaryLoadedView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               NeH1Text.bold(
-                state.weekDay,
+                state.today.weekDay,
                 color: context.colors.onBackground,
               ),
               NeH2Text.bold(
-                state.day,
+                state.today.dayOfMonth,
                 color: context.colors.outline,
               ),
               const VerticalSpace(16),

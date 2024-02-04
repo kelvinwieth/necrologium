@@ -1,8 +1,6 @@
-import 'package:dart_date/dart_date.dart' as dt;
-import 'package:dartx/dartx.dart' as dx;
+import 'package:dart_date/dart_date.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:intl/intl.dart';
 import 'package:necrologium/diary/core/diary.dart';
 import 'package:necrologium/shared/ui/extensions/context_colors_helper.dart';
 import 'package:necrologium/shared/ui/styles/ne_colors.dart';
@@ -39,11 +37,7 @@ class Calendar extends StatelessWidget {
                 headerStyle: HeaderStyle(
                   formatButtonVisible: false,
                   titleCentered: true,
-                  titleTextFormatter: (date, locale) {
-                    return DateFormat("MMMM',' y", locale)
-                        .format(date)
-                        .capitalize();
-                  },
+                  titleTextFormatter: (date, _) => date.monthOfYear,
                   titleTextStyle: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
@@ -68,13 +62,7 @@ class Calendar extends StatelessWidget {
                     fontSize: 10,
                     color: context.colors.onPrimaryContainer,
                   ),
-                  dowTextFormatter: (date, locale) {
-                    return DateFormat.E(locale)
-                        .format(date)
-                        .characters
-                        .first
-                        .toUpperCase();
-                  },
+                  dowTextFormatter: (date, _) => date.weekDayInitial,
                 ),
                 calendarBuilders: CalendarBuilders(
                   todayBuilder: (_, date, __) {

@@ -17,9 +17,7 @@ class DiaryBloc extends Bloc<DiaryEvent, DiaryState> {
 
     try {
       final diary = await repository.getDiary();
-      emit(
-        DiaryLoaded(diary: diary, today: DateTime.now()),
-      );
+      emit(DiaryLoaded(diary: diary));
     } catch (e) {
       // TODO: handle error
       log('#### $e');
