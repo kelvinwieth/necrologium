@@ -191,7 +191,10 @@ class _DayCard extends StatelessWidget {
     return GestureDetector(
       onTap: date.isAfterToday
           ? null
-          : () => context.go('/diary/day', extra: {'date': date, 'note': note}),
+          : () => context.go(
+                '/diary/note',
+                extra: {'date': date, 'note': note},
+              ),
       child: Container(
         decoration: BoxDecoration(
           color: bgColor(context),
