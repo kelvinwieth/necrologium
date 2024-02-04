@@ -105,6 +105,17 @@ class NeRegularText extends NeText {
           fontSize: 14,
           fontFamily: 'Karla',
         );
+
+  NeRegularText.inter(
+    super.data, {
+    super.key,
+    super.color,
+    super.fontWeight,
+    super.textAlign,
+  }) : super(
+          fontSize: 14,
+          fontFamily: 'Inter',
+        );
 }
 
 class NeSmallText extends NeText {

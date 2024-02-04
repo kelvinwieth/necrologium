@@ -1,3 +1,5 @@
+import 'package:dartx/dartx.dart';
+import 'package:faker/faker.dart';
 import 'package:necrologium/diary/core/diary.dart';
 import 'package:necrologium/diary/core/diary_repository.dart';
 
@@ -7,8 +9,14 @@ class InMemoryDiaryRepository implements DiaryRepository {
   Duration get _delay => const Duration(seconds: 1);
 
   InMemoryDiaryRepository() : _diary = Diary() {
-    _diary.addNote(DateTime(2024, 02, 02), 'Foo bar');
-    _diary.addNote(DateTime(2024, 02, 03), 'Pudim');
+    _diary.addNote(
+      DateTime(2024, 02, 02),
+      Faker().lorem.sentences(10).join('. ').capitalize(),
+    );
+    _diary.addNote(
+      DateTime(2024, 02, 03),
+      Faker().lorem.sentences(10).join('. ').capitalize(),
+    );
   }
 
   @override
