@@ -32,23 +32,17 @@ class DiaryLoadedView extends StatelessWidget {
               const VerticalSpace(16),
               const StatusTag(),
               const VerticalSpace(16),
-              const SizedBox(
+              SizedBox(
                 height: 88,
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Flexible(
-                      child: ActionCard.highlight(
-                        icon: Icons.edit_document,
-                        text: 'Escrever \ndiário',
-                      ),
+                      child: _WriteOrReadTodayCard(wrote: state.wroteToday),
                     ),
-                    HorizontalSpace(8),
-                    Flexible(
-                      child: ActionCard(
-                        icon: Icons.chevron_left,
-                        text: 'Ver diário de ontem',
-                      ),
+                    const HorizontalSpace(8),
+                    const Flexible(
+                      child: _ReadYesterdayCard(),
                     ),
                   ],
                 ),
@@ -64,6 +58,37 @@ class DiaryLoadedView extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _WriteOrReadTodayCard extends StatelessWidget {
+  final bool wrote;
+
+  const _WriteOrReadTodayCard({required this.wrote});
+
+  @override
+  Widget build(BuildContext context) {
+    return wrote
+        ? const ActionCard.highlight(
+            icon: Icons.menu_book,
+            text: 'Ler meu \ndiário',
+          )
+        : const ActionCard.highlight(
+            icon: Icons.edit_document,
+            text: 'Escrever \ndiário',
+          );
+  }
+}
+
+class _ReadYesterdayCard extends StatelessWidget {
+  const _ReadYesterdayCard();
+
+  @override
+  Widget build(BuildContext context) {
+    return const ActionCard(
+      icon: Icons.chevron_left,
+      text: 'Ver diário \nde ontem',
     );
   }
 }
