@@ -76,18 +76,21 @@ class Calendar extends StatelessWidget {
                   },
                 ),
                 calendarBuilders: CalendarBuilders(
-                  todayBuilder: (_, day, __) {
-                    return Padding(
-                      padding: const EdgeInsets.all(4),
-                      child: _DayCard(day, day: diary.getDayOrNull(day)),
-                    );
-                  },
-                  defaultBuilder: (_, day, __) {
+                  todayBuilder: (_, date, __) {
                     return Padding(
                       padding: const EdgeInsets.all(4),
                       child: _DayCard(
-                        day,
-                        day: diary.getDayOrNull(day),
+                        date: date,
+                        note: diary.getNoteOrNull(date),
+                      ),
+                    );
+                  },
+                  defaultBuilder: (_, date, __) {
+                    return Padding(
+                      padding: const EdgeInsets.all(4),
+                      child: _DayCard(
+                        date: date,
+                        note: diary.getNoteOrNull(date),
                       ),
                     );
                   },
@@ -161,13 +164,13 @@ class _Label extends StatelessWidget {
 }
 
 class _DayCard extends StatelessWidget {
+  final String? note;
   final DateTime date;
-  final DiaryDay? day;
 
-  const _DayCard(this.date, {this.day});
+  const _DayCard({required this.date, this.note});
 
   bool get isFuture => date.date.isAfter(DateTime.now().date);
-  bool get wrote => day != null;
+  bool get wrote => note != null;
 
   Color bgColor(BuildContext context) {
     if (wrote) {
@@ -187,7 +190,10 @@ class _DayCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.go('/diary/${day?.id}', extra: day);
+        context.go(
+          '/diary/day',
+          extra: {'date': date, 'note': note},
+        );
       },
       child: Container(
         decoration: BoxDecoration(

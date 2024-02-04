@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:necrologium/diary/core/diary.dart';
 import 'package:necrologium/navigation/ui/custom_app_bar.dart';
 
 class DiaryDayScreen extends StatefulWidget {
-  final String? id;
-  final DiaryDay? day;
+  final String? note;
+  final DateTime date;
 
-  const DiaryDayScreen({super.key, this.id, this.day});
+  const DiaryDayScreen({super.key, this.note, required this.date});
 
   @override
   State<DiaryDayScreen> createState() => _DiaryDayScreenState();

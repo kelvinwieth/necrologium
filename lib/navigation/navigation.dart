@@ -1,5 +1,4 @@
 import 'package:go_router/go_router.dart';
-import 'package:necrologium/diary/core/diary.dart';
 import 'package:necrologium/diary/ui/screens/diary_day_screen.dart';
 import 'package:necrologium/diary/ui/screens/diary_screen.dart';
 import 'package:necrologium/navigation/ui/scaffold_with_tabs.dart';
@@ -26,12 +25,12 @@ abstract class Navigation {
                 builder: (_, __) => const DiaryScreen(),
                 routes: [
                   GoRoute(
-                    path: ':id',
+                    path: 'day',
                     builder: (_, state) {
-                      return DiaryDayScreen(
-                        id: state.pathParameters['id'],
-                        day: state.extra?.maybeAs<DiaryDay>(),
-                      );
+                      final extra = state.extra?.maybeAs<Map>();
+                      final date = extra?['date'] as DateTime;
+                      final note = extra?['note'] as String?;
+                      return DiaryDayScreen(date: date, note: note);
                     },
                   ),
                 ],

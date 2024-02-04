@@ -1,28 +1,23 @@
-import 'package:dart_date/dart_date.dart';
-import 'package:dartx/dartx.dart';
-import 'package:uuid/uuid.dart';
+import 'package:necrologium/shared/utils/extensions.dart';
 
 class Diary {
-  final List<DiaryDay> days;
+  final Map<DateTime, String> _notes;
 
-  const Diary({required this.days});
+  Diary() : _notes = {};
 
-  bool wroteOnDay(DateTime day) {
-    return days.any((d) => d.day.isSameDay(day));
+  bool wroteOnDay(DateTime date) {
+    return _notes.containsKey(date.normalized);
   }
 
-  DiaryDay? getDayOrNull(DateTime date) {
-    return days.firstOrNullWhere((d) => d.day.isSameDay(date));
+  String? getNoteOrNull(DateTime date) {
+    try {
+      return _notes[date.normalized];
+    } catch (_) {
+      return null;
+    }
   }
-}
 
-class DiaryDay {
-  final String id;
-  final DateTime day;
-  final String note;
-
-  DiaryDay({
-    required this.day,
-    required this.note,
-  }) : id = const Uuid().v1();
+  void addNote(DateTime date, String note) {
+    _notes[date.normalized] = note;
+  }
 }

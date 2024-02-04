@@ -7,3 +7,9 @@ extension CastingExtension on Object {
     }
   }
 }
+
+extension DateTimeExtension on DateTime {
+  DateTime get normalized {
+    return DateTime.utc(year, month, day);
+  }
+}

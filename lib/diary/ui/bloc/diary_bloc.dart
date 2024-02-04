@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:necrologium/diary/core/diary_repository.dart';
 import 'package:necrologium/diary/ui/bloc/diary_event.dart';
@@ -15,10 +17,12 @@ class DiaryBloc extends Bloc<DiaryEvent, DiaryState> {
 
     try {
       final diary = await repository.getDiary();
-      final today = DateTime.now();
-      emit(DiaryLoaded(diary: diary, today: today));
-    } catch (_) {
+      emit(
+        DiaryLoaded(diary: diary, today: DateTime.now()),
+      );
+    } catch (e) {
       // TODO: handle error
+      log('#### $e');
     }
   }
 }
