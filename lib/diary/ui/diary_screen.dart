@@ -30,7 +30,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
       body: BlocBuilder<DiaryBloc, DiaryState>(
         builder: (context, state) {
           return switch (state) {
-            DiaryLoaded l => const DiaryLoadedView(),
+            DiaryLoaded s => DiaryLoadedView(state: s),
             DiaryLoading _ => const DiaryLoadingView(),
             _ => const SizedBox(),
           };

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:necrologium/diary/core/diary.dart';
+import 'package:necrologium/diary/ui/bloc/diary_state.dart';
 import 'package:necrologium/diary/ui/widgets/calendar.dart';
 import 'package:necrologium/diary/ui/widgets/status_tag.dart';
 import 'package:necrologium/shared/ui/extensions/context_colors_helper.dart';
@@ -7,7 +9,9 @@ import 'package:necrologium/shared/ui/widgets/action_card.dart';
 import 'package:necrologium/shared/ui/widgets/spacers.dart';
 
 class DiaryLoadedView extends StatelessWidget {
-  const DiaryLoadedView({super.key});
+  final DiaryLoaded state;
+
+  const DiaryLoadedView({super.key, required this.state});
 
   @override
   Widget build(BuildContext context) {
@@ -19,15 +23,15 @@ class DiaryLoadedView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               NeH1Text.bold(
-                'Segunda-feira',
+                state.weekDay,
                 color: context.colors.onBackground,
               ),
               NeH2Text.bold(
-                '16 de dezembro',
+                state.day,
                 color: context.colors.outline,
               ),
               const VerticalSpace(16),
-              const StatusTag(isCompleted: false),
+              const StatusTag(),
               const VerticalSpace(16),
               const SizedBox(
                 height: 88,

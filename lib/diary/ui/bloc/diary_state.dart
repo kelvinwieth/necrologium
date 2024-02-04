@@ -1,4 +1,6 @@
+import 'package:dartx/dartx.dart';
 import 'package:equatable/equatable.dart';
+import 'package:intl/intl.dart';
 import 'package:necrologium/diary/core/diary.dart';
 
 abstract class DiaryState extends Equatable {}
@@ -23,6 +25,9 @@ class DiaryLoaded extends DiaryState {
     required this.today,
     required this.wroteToday,
   });
+
+  String get weekDay => DateFormat('EEEE').format(today).capitalize();
+  String get day => DateFormat("d 'de' MMMM").format(today).capitalize();
 
   @override
   List<Object?> get props => [diary, wroteToday];

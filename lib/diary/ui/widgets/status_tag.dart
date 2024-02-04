@@ -8,9 +8,7 @@ import 'package:necrologium/shared/ui/texts/ne_texts.dart';
 import 'package:necrologium/shared/ui/widgets/spacers.dart';
 
 class StatusTag extends StatelessWidget {
-  final bool isCompleted;
-
-  const StatusTag({super.key, required this.isCompleted});
+  const StatusTag({super.key});
 
   @override
   Widget build(BuildContext context) {
