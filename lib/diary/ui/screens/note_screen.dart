@@ -40,7 +40,7 @@ class NoteScreen extends StatelessWidget {
               textAlign: TextAlign.justify,
             ),
             const Spacer(),
-            const Row(
+            Row(
               mainAxisSize: MainAxisSize.max,
               children: [
                 Expanded(
@@ -49,13 +49,15 @@ class NoteScreen extends StatelessWidget {
                     leading: Icons.delete_outline,
                     backgroundColor: NeColors.gray24b,
                     textColor: Colors.white,
+                    onTap: () {},
                   ),
                 ),
-                HorizontalSpace(8),
+                const HorizontalSpace(8),
                 Expanded(
                   child: NePrimaryButton(
                     title: 'Editar texto',
                     leading: Icons.edit,
+                    onTap: () {},
                   ),
                 ),
               ],
