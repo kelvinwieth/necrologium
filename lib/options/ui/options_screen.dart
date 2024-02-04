@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:necrologium/shared/ui/extensions/context_colors_helper.dart';
+import 'package:necrologium/shared/ui/styles/ne_themes.dart';
 import 'package:necrologium/shared/ui/texts/ne_texts.dart';
 import 'package:necrologium/shared/ui/widgets/spacers.dart';
 
@@ -73,13 +74,18 @@ class _DarkModeOption extends StatelessWidget {
           ),
         ),
         const Spacer(),
-        FlutterSwitch(
-          value: true,
-          onToggle: (_) {},
-          height: 24,
-          width: 48,
-          padding: 2,
-          activeColor: context.colors.primary,
+        ValueListenableBuilder(
+          valueListenable: NeThemes.themeModeProvider,
+          builder: (_, __, ___) {
+            return FlutterSwitch(
+              value: NeThemes.isDark,
+              onToggle: NeThemes.setDarkMode,
+              height: 24,
+              width: 48,
+              padding: 2,
+              activeColor: context.colors.primary,
+            );
+          },
         ),
       ],
     );
