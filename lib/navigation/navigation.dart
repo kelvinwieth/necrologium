@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:necrologium/diary/core/diary_repository.dart';
 import 'package:necrologium/diary/infra/in_memory_diary_repository.dart';
 import 'package:necrologium/diary/ui/bloc/diary_bloc.dart';
-import 'package:necrologium/diary/ui/diary_screen.dart';
+import 'package:necrologium/diary/ui/screens/diary_screen.dart';
 import 'package:necrologium/navigation/ui/scaffold_with_tabs.dart';
 import 'package:necrologium/necrologium/ui/necrologium_screen.dart';
 import 'package:necrologium/onboard/ui/screens/onboard_screen.dart';
