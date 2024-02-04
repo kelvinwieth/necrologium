@@ -24,5 +24,7 @@ abstract class NeColorSchemes {
     onPrimaryContainer: NeColors.gray48b,
     surface: NeColors.gray16b,
     onSurface: Colors.white,
+    surfaceVariant: NeColors.gray8b,
+    onSurfaceVariant: Colors.white,
   );
 }
