@@ -23,7 +23,7 @@ class OnboardView01 extends StatelessWidget {
           ),
           const VerticalSpace(32),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 48),
+            padding: const EdgeInsets.symmetric(horizontal: 24),
             child: Column(
               children: [
                 NeDisplayText(
