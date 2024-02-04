@@ -30,7 +30,7 @@ class DiaryLoadedView extends StatelessWidget {
                 color: context.colors.outline,
               ),
               const VerticalSpace(16),
-              const StatusTag(),
+              StatusTag(wrote: state.wroteToday),
               const VerticalSpace(16),
               SizedBox(
                 height: 88,
