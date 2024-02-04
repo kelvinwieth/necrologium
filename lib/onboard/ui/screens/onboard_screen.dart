@@ -32,7 +32,6 @@ class _OnboardScreenState extends State<OnboardScreen> {
     return SafeArea(
       child: PageView(
         controller: controller,
-        physics: const NeverScrollableScrollPhysics(),
         children: [
           OnboardView01(onNext: next),
           OnboardView02(onPop: pop, onNext: next),
