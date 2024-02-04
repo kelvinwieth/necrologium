@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:necrologium/shared/ui/extensions/context_colors_helper.dart';
+import 'package:necrologium/shared/ui/styles/ne_themes.dart';
 
 class SvgIllustration extends StatelessWidget {
   final String path;
@@ -21,7 +22,9 @@ class SvgIllustration extends StatelessWidget {
     return Container(
       width: double.maxFinite,
       height: double.maxFinite,
-      color: context.colors.onBackground,
+      color: NeThemes.isDark
+          ? context.colors.onBackground
+          : context.colors.primaryContainer,
       child: SvgPicture.asset(path),
     );
   }
