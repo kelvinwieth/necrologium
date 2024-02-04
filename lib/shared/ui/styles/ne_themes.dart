@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 abstract class NeThemes {
-  static final themeModeProvider = ValueNotifier(ThemeMode.system);
+  static final themeModeProvider = ValueNotifier(ThemeMode.dark);
 
   static ThemeMode get themeMode => themeModeProvider.value;
 
