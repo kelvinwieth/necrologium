@@ -24,11 +24,13 @@ class StatusTag extends StatelessWidget {
             size: 12,
           ),
           const HorizontalSpace(8),
-          NeRegularText(
-            wrote
-                ? 'Você já registrou em seu diário hoje '
-                : 'Você ainda não escreveu seu diário hoje',
-            color: context.colors.onPrimary,
+          Flexible(
+            child: NeRegularText(
+              wrote
+                  ? 'Você já registrou em seu diário hoje '
+                  : 'Você ainda não escreveu seu diário hoje',
+              color: context.colors.onPrimary,
+            ),
           ),
         ],
       ),
